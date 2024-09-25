@@ -54,6 +54,8 @@ public class Main {
         scanner.close();
     }
 
+//    Hello Bhavil
+
     // Square root function
     private static void squareRoot(Scanner scanner) {
         System.out.print("Enter a number: ");
