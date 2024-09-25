@@ -1,26 +1,43 @@
-// pipeline{
-//     environment{
-//         docker_image = ""
-//     }
-//     agent any
-//     stages{
-//         stage('Stage 1: Git Clone'){
-//             steps{
-//                 git branch: 'master',
-//                 url:'https://github.com/Bhavil-13/scien_calcu.git'
-//             }
-//         }
-//         stage('Step 2: Maven Build'){
-//             steps{
-//                 sh 'mvn clean install'
-//             }
-//         }
-//         stage('Stage 3: Build Docker Image'){
-//             steps{
-//                 script{
-//                     docker_image = docker.build "Bhavil13/sci_calc_miniproj:latest"
-//                 }
-//             }
-//         }
-//     }
-// }
+pipeline{
+    environment{
+        docker_image = ""
+    }
+    agent any
+    stages{
+        stage('Stage 1: Git Clone'){
+            steps{
+                git branch: 'master',
+                url:'https://github.com/Bhavil-13/SPE_miniproj.git'
+            }
+        }
+        stage('Step 2: Maven Build'){
+            steps{
+                sh 'mvn clean install'
+            }
+        }
+        stage('Stage 3: Build Docker Image'){
+            steps{
+                script{
+                    docker_image = docker.build "bhavil13/sci_calc_miniproj:latest"
+                }
+            }
+        }
+        stage('Stage 4: Push docker image to hub') {
+            steps{
+                script{
+                    docker.withRegistry('', 'DockerHub_ID'){
+                        docker_image.push()
+                    }
+                }
+            }
+        }
+        stage('Stage 5: Clean docker images'){
+            steps{
+                script{
+                    sh 'docker container prune -f'
+                    sh 'docker image prune -f'
+                }
+            }
+        }
+    }
+}
