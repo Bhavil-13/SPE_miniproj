@@ -1,0 +1,7 @@
+2024-09-25 23:49:51.945 [main] INFO  org.example.Main - Square Root Function selected.
+2024-09-25 23:49:54.543 [main] INFO  org.example.Main - Square root of 9.0 is 3.0
+2024-09-25 23:50:01.110 [main] INFO  org.example.Main - Square Root Function selected.
+2024-09-25 23:50:03.408 [main] ERROR org.example.Main - Square root of negative number attempted.
+2024-09-25 23:50:10.464 [main] INFO  org.example.Main - Power Function selected.
+2024-09-25 23:50:14.093 [main] INFO  org.example.Main - Power function: 2.0^3.0 = 8.0
+2024-09-25 23:50:17.536 [main] INFO  org.example.Main - Exiting the calculator.
